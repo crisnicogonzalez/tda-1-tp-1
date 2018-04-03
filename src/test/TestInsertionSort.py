@@ -15,7 +15,7 @@ class TestInsertionSort(unittest.TestCase):
         self.assertTrue(check_order(a_element))
 
     def test_few_elements(self):
-        list_with_few_elements = [3, 4, 5, 2]
+        list_with_few_elements = [6, 5, 4, 3, 2, 1]
         self.assertFalse(check_order(list_with_few_elements))
         sort(list_with_few_elements)
         self.assertTrue(check_order(list_with_few_elements))
