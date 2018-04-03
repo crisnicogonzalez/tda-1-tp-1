@@ -21,10 +21,10 @@ def sort(list_to_sort):
             x_value = list_to_sort[x]
             logging.debug('X {} X value {}'.format(x, x_value), extra=log_info)
         if pivote_value >= x_value and x != pivote -1:
-            logging.debug('insertar en la posicion {} el valor {}'.format(x+1, pivote_value), extra=log_info)
+            logging.info('insertar en la posicion {} el valor {}'.format(x+1, pivote_value), extra=log_info)
             list_to_sort.insert(x+1, pivote_value)
             del list_to_sort[pivote+1]
-        logging.info('La lista {}'.format(list_to_sort), extra=log_info)
+        logging.debug('La lista {}'.format(list_to_sort), extra=log_info)
 
     end = time.time()
     logging.info('Tardo {} para {} elementos'.format(end-start, len_list), extra=log_info)
