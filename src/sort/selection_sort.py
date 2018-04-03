@@ -3,7 +3,7 @@ import time
 
 FORMAT = "%(asctime)-15s    %(sort)-8s     %(message)s"
 logging.basicConfig(format=FORMAT, level=logging.INFO)
-log_info = {'sort': 'Insertion Sort'}
+log_info = {'sort': 'Selection Sort'}
 
 
 def sort(list_to_sort):
