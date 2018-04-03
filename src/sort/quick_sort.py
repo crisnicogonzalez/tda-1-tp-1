@@ -37,8 +37,8 @@ def recursive_sort(list_to_sort, first_position, last_position):
         logging.info('Pivote seleccionado en la posicion {} con valor {}'.format(pivote_position, pivote_value), extra=log_info)
         logging.info('i -> {} j -> {}'.format(i,j), extra=log_info)
         switches = {}
-        somePointerAdvanced = True
-        while i < j and somePointerAdvanced:
+        some_pointer_advanced = True
+        while i < j and some_pointer_advanced:
             logging.info('La lista se encuentra de esta manera {}'.format(list_to_sort), extra=log_info)
             i_advance = False
             j_advance = False
@@ -55,7 +55,7 @@ def recursive_sort(list_to_sort, first_position, last_position):
                 switch(i-1, j+1, list_to_sort)
                 switches[i-1] = j+1
                 switches[j+1] = i-1
-            somePointerAdvanced = j_advance or i_advance
+            some_pointer_advanced = j_advance or i_advance
         logging.info('La lista se encuentra de esta manera {}'.format(list_to_sort), extra=log_info)
         recursive_sort(list_to_sort, first_position, i-2)
         recursive_sort(list_to_sort, i+1, last_position)
@@ -65,7 +65,7 @@ def sort(list_to_sort):
     start = time.time()
     recursive_sort(list_to_sort, 0, len(list_to_sort)-1)
     end = time.time()
-    logging.info('Tardo {} para {} elementos'.format(end-start, len_list), extra=log_info)
+    logging.info('Tardo {} para {} elementos'.format(end-start, len(list_to_sort)), extra=log_info)
 
 
 
