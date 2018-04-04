@@ -1,6 +1,8 @@
 import logging
 import time
 
+from src.utils.switch import switch
+
 FORMAT = "%(asctime)-15s    %(sort)-8s     %(message)s"
 logging.basicConfig(format=FORMAT, level=logging.INFO)
 log_info = {'sort': 'Selection Sort'}
@@ -22,9 +24,4 @@ def sort(list_to_sort):
     end = time.time()
     logging.info('Tardo {} para {} elementos'.format(end-start, len_list), extra=log_info)
 
-# Dada una lista y 2 posiciones,hace el cambio de valores
-# switch(0,1,[1,2,3]) -> [2,1,3]
-def switch(x, y, list_to_switch):
-    x_value = list_to_switch[x]
-    list_to_switch[x] = list_to_switch[y]
-    list_to_switch[y] = x_value
+

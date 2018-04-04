@@ -1,6 +1,6 @@
 import unittest
 from src.sort.selection_sort import sort
-from src.sort.sort_validator import check_order
+from src.utils.sort_validator import check_order
 
 
 class TestSelectionSort(unittest.TestCase):

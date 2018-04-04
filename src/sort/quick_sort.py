@@ -1,7 +1,7 @@
 import logging
 import time
 
-from src.sort.selection_sort import switch
+from src.utils.switch import switch
 
 FORMAT = "%(asctime)-15s    %(sort)-8s     %(message)s"
 logging.basicConfig(format=FORMAT, level=logging.INFO)
