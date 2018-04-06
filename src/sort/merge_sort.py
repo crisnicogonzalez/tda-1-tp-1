@@ -1,5 +1,12 @@
+import logging
+import time
 
 from src.utils.switch import switch
+
+FORMAT = "%(asctime)-15s    %(sort)-8s     %(message)s"
+logging.basicConfig(format=FORMAT, level=logging.INFO)
+log_info = {'sort': 'Merge Sort'}
+
 
 def sort_lists(first_list, second_list):
     i, j = 0, 0
@@ -17,10 +24,11 @@ def sort_lists(first_list, second_list):
         return list_to_return.extend(first_list[i:])
     else:
         list_to_return.extend(second_list[j:])
-    return list_to_return
+        return list_to_return
 
 
-def sort(list_to_sort):
+def merge_sort(list_to_sort):
+    logging.info('List to sort {}'.format(list_to_sort), extra=logging)
     list_size = len(list_to_sort)
     if list_size <= 2:
         if list_size <= 1:
@@ -31,9 +39,13 @@ def sort(list_to_sort):
                 return list_to_sort
     else:
         medium = (list_size / 2)
-        list_right = sort(list_to_sort[:medium])
-        list_left = sort(list_to_sort[medium:])
+        list_right = merge_sort(list_to_sort[:medium])
+        list_left = merge_sort(list_to_sort[medium:])
+        logging.info('Right list {} Left list {}'.format(list_right, list_left), extra=log_info)
         return sort_lists(list_right, list_left)
 
 
-
+def sort(list_to_sort):
+    start = time.time()
+    end = time.time()
+    logging.info('Tardo {} para {} elementos'.format(end-start, len(list_to_sort)), extra=log_info)
