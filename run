@@ -1,0 +1,5 @@
+pip install --upgrade pip
+python -mpip install -U pip
+python -mpip install -U matplotlib
+sudo apt-get install python-tk
+python main.py
