@@ -36,7 +36,7 @@ def merge_sort(list_to_sort):
         else:
             if list_to_sort[1] < list_to_sort[0]:
                 switch(0, 1, list_to_sort)
-                return list_to_sort
+            return list_to_sort
     else:
         medium = (list_size / 2)
         list_right = merge_sort(list_to_sort[:medium])
