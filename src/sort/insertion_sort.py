@@ -8,7 +8,6 @@ log_info = {'sort': 'Insertion Sort'}
 
 def sort(list_to_sort):
     logging.info('La lista originalmente {}'.format(list_to_sort), extra=log_info)
-    start = time.time()
     len_list = len(list_to_sort)
     for pivote in range(1, len_list):
         pivote_value = list_to_sort[pivote]
@@ -25,8 +24,5 @@ def sort(list_to_sort):
             list_to_sort.insert(x+1, pivote_value)
             del list_to_sort[pivote+1]
         logging.debug('La lista {}'.format(list_to_sort), extra=log_info)
-
-    end = time.time()
-    logging.info('Tardo {} para {} elementos'.format(end-start, len_list), extra=log_info)
-
+    return list_to_sort
 

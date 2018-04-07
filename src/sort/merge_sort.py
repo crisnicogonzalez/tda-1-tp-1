@@ -48,8 +48,5 @@ def merge_sort(list_to_sort):
 
 
 def sort(list_to_sort):
-    start = time.time()
     list_to_return = merge_sort(list_to_sort)
-    end = time.time()
-    logging.info('Tardo {} para {} elementos'.format(end-start, len(list_to_sort)), extra=log_info)
     return list_to_return

@@ -9,8 +9,6 @@ log_info = {'sort': 'Selection Sort'}
 
 
 def sort(list_to_sort):
-    start = time.time()
-    len_list = len(list_to_sort)
     for pivote_position in range(0, len(list_to_sort)):
         less = list_to_sort[pivote_position]
         less_position = pivote_position
@@ -21,7 +19,6 @@ def sort(list_to_sort):
                 less_position = x
         if less_position != pivote_position:
             switch(pivote_position, less_position, list_to_sort)
-    end = time.time()
-    logging.info('Tardo {} para {} elementos'.format(end-start, len_list), extra=log_info)
+    return list_to_sort
 
 
