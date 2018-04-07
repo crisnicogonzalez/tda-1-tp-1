@@ -28,7 +28,7 @@ def sort_lists(first_list, second_list):
 
 
 def merge_sort(list_to_sort):
-    logging.info('List to sort {}'.format(list_to_sort), extra=log_info)
+    logging.debug('List to sort {}'.format(list_to_sort), extra=log_info)
     list_size = len(list_to_sort)
     if list_size <= 2:
         if list_size <= 1:
@@ -41,9 +41,9 @@ def merge_sort(list_to_sort):
         medium = (list_size / 2)
         list_right = merge_sort(list_to_sort[:medium])
         list_left = merge_sort(list_to_sort[medium:])
-        logging.info('Right list {} Left list {}'.format(list_right, list_left), extra=log_info)
-        list_sorted =  sort_lists(list_right, list_left)
-        logging.info('List sorted'.format(list_sorted), extra=log_info)
+        logging.debug('Right list {} Left list {}'.format(list_right, list_left), extra=log_info)
+        list_sorted = sort_lists(list_right, list_left)
+        logging.debug('List sorted'.format(list_sorted), extra=log_info)
         return list_sorted
 
 
