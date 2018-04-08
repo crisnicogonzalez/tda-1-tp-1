@@ -36,6 +36,11 @@ def initialize_results_dict():
     return result
 
 
+def print_result_of_sort(result):
+    for x in result:
+        print '{},{}'.format(x, result[x][0])
+
+
 def print_sort_name_and_time(averages):
     print averages
     for sort_name in averages:
@@ -91,8 +96,13 @@ def run():
     # wort_set_for_insertion_set = generate_numbers_in_orden(10000)
     # result_insertion_sort = test_sort([wort_set_for_insertion_set], insertion_sort)
     wort_set_for_merge_sort = generate_numbers_for_merge_sort_wort_case(10000)
-    result_merge_sort = test_sort([wort_set_for_merge_sort], merge_sort)
-    print result_merge_sort
+    normal_set_for_merge_sort = generate_random_numbers_set(10000, 10)
+    result_merge_sort_wort_case = test_sort(wort_set_for_merge_sort, merge_sort)
+    result_merge_sort_normal_case = test_sort(normal_set_for_merge_sort, merge_sort)
+    print 'Merge sort wort case'
+    print_sort_name_and_time(calculate_mean_time_for_every_sort({'merge_sort':result_merge_sort_wort_case}))
+    print 'Merge sort normal case'
+    print_sort_name_and_time(calculate_mean_time_for_every_sort({'merge_sort':result_merge_sort_normal_case}))
     # print result_insertion_sort
     # print results
 
