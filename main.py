@@ -95,14 +95,22 @@ def run():
     # logging.info('Generando peor set para insertion sort', extra=log_info)
     # wort_set_for_insertion_set = generate_numbers_in_orden(10000)
     # result_insertion_sort = test_sort([wort_set_for_insertion_set], insertion_sort)
-    wort_set_for_merge_sort = generate_numbers_for_merge_sort_wort_case(10000)
-    normal_set_for_merge_sort = generate_random_numbers_set(10000, 10)
-    result_merge_sort_wort_case = test_sort(wort_set_for_merge_sort, merge_sort)
-    result_merge_sort_normal_case = test_sort(normal_set_for_merge_sort, merge_sort)
-    print 'Merge sort wort case'
-    print_sort_name_and_time(calculate_mean_time_for_every_sort({'merge_sort':result_merge_sort_wort_case}))
-    print 'Merge sort normal case'
-    print_sort_name_and_time(calculate_mean_time_for_every_sort({'merge_sort':result_merge_sort_normal_case}))
+    # wort_set_for_merge_sort = generate_numbers_for_merge_sort_wort_case(10000)
+    # normal_set_for_merge_sort = generate_random_numbers_set(10000, 10)
+    # result_merge_sort_wort_case = test_sort(wort_set_for_merge_sort, merge_sort)
+    # result_merge_sort_normal_case = test_sort(normal_set_for_merge_sort, merge_sort)
+    # print 'Merge sort wort case'
+    # print_sort_name_and_time(calculate_mean_time_for_every_sort({'merge_sort':result_merge_sort_wort_case}))
+    # print 'Merge sort normal case'
+    # print_sort_name_and_time(calculate_mean_time_for_every_sort({'merge_sort':result_merge_sort_normal_case}))
+    wort_set_for_quick_sort = generate_numbers_in_orden()
+    normal_set_for_quick_sort = generate_random_numbers_set()
+    result_quick_sort_normal_case = test_sort(normal_set_for_quick_sort, quick_sort)
+    result_quick_sort_wort_case = test_sort(wort_set_for_quick_sort, quick_sort)
+    print 'Quick sort normal case'
+    print_sort_name_and_time(calculate_mean_time_for_every_sort({'quick_sort': result_quick_sort_normal_case}))
+    print 'Quick sort wort case'
+    print_sort_name_and_time(calculate_mean_time_for_every_sort({'quick_sort': result_quick_sort_wort_case}))
     # print result_insertion_sort
     # print results
 

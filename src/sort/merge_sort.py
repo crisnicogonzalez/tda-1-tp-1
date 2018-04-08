@@ -1,5 +1,4 @@
 import logging
-import time
 
 from src.utils.switch import switch
 

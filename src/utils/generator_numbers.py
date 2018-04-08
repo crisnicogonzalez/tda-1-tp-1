@@ -6,7 +6,7 @@ logging.basicConfig(format=FORMAT, level=logging.INFO)
 log_info = {'sort': 'Generator'}
 
 
-def generate_random_numbers_set(number_of_elements, numbers_of_sets):
+def generate_random_numbers_set(number_of_elements=10000, numbers_of_sets=10):
     logging.info('Generando conjunto de numeros randoms', extra=log_info)
     sets = []
     for i in range(0, numbers_of_sets):
@@ -18,18 +18,22 @@ def generate_random_numbers_set(number_of_elements, numbers_of_sets):
     return sets
 
 
-def generate_numbers_in_orden(size_limit, descending=True):
-    if descending:
-        return range(size_limit, 0, -1)
-    return range(0, size_limit)
+def generate_numbers_in_orden(number_of_elements=10000, number_of_sets=10, descending=True):
+    sets = []
+    for x in range(0, number_of_sets):
+        if descending:
+             sets.append(range(number_of_elements, 0, -1))
+        else:
+            sets.append(range(0, number_of_elements))
+    return sets
 
 
-def generate_numbers_for_merge_sort_wort_case(numbers_of_elements, numbers_of_sets = 10):
+def generate_numbers_for_merge_sort_wort_case(number_of_elements=10000, number_of_sets=10):
     sets = []
     population = range(0, 10000)
-    for number_set in range(0, numbers_of_sets):
+    for number_set in range(0, number_of_sets):
         set = []
-        for x in range(0, numbers_of_elements / 4):
+        for x in range(0, number_of_elements / 4):
             mini_set = random.sample(population, 4)
             mini_set.sort()
             set.extend([mini_set[2], mini_set[1], mini_set[3], mini_set[0]])
