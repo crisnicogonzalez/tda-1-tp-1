@@ -5,7 +5,7 @@ import numpy as np
 from src.sort.merge_sort import sort as merge_sort
 from src.sort.quick_sort import sort as quick_sort
 from src.sort.insertion_sort import sort as insertion_sort
-from src.utils.generator_numbers import generate_random_numbers_set,generate_numbers_in_orden
+from src.utils.generator_numbers import *
 
 
 sorters = {
@@ -75,23 +75,26 @@ def test_sort(sets, sort):
 
 
 def run():
-    logging.info('Iniciando punto 1 item b del TP', extra=log_info)
-    sets = generate_random_numbers_set(10000, 10)
-
-    logging.info('Iniciando punto 1 item c del TP', extra=log_info)
-    results = test_sorts(sets)
-
-    logging.info('Iniciando punto 1 item d del TP', extra=log_info)
-    execution_time_average = calculate_mean_time_for_every_sort(results)
-    print execution_time_average
-    print_sort_name_and_time(execution_time_average)
-
-    logging.info('Iniciando punto 1 item f del TP', extra=log_info)
-    logging.info('Generando peor set para insertion sort', extra=log_info)
-    set_ordered = generate_numbers_in_orden(10000)
-    result_insertion_sort = test_sort([set_ordered], insertion_sort)
-    print result_insertion_sort
-    print results
+    # logging.info('Iniciando punto 1 item b del TP', extra=log_info)
+    # sets = generate_random_numbers_set(10000, 10)
+    #
+    # logging.info('Iniciando punto 1 item c del TP', extra=log_info)
+    # results = test_sorts(sets)
+    #
+    # logging.info('Iniciando punto 1 item d del TP', extra=log_info)
+    # execution_time_average = calculate_mean_time_for_every_sort(results)
+    # print execution_time_average
+    # print_sort_name_and_time(execution_time_average)
+    #
+    # logging.info('Iniciando punto 1 item f del TP', extra=log_info)
+    # logging.info('Generando peor set para insertion sort', extra=log_info)
+    # wort_set_for_insertion_set = generate_numbers_in_orden(10000)
+    # result_insertion_sort = test_sort([wort_set_for_insertion_set], insertion_sort)
+    wort_set_for_merge_sort = generate_numbers_for_merge_sort_wort_case(10000)
+    result_merge_sort = test_sort([wort_set_for_merge_sort], merge_sort)
+    print result_merge_sort
+    # print result_insertion_sort
+    # print results
 
 
 if __name__ == '__main__':

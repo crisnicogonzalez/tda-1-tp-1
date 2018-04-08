@@ -22,3 +22,13 @@ def generate_numbers_in_orden(size_limit, descending=True):
     if descending:
         return range(size_limit, 0, -1)
     return range(0, size_limit)
+
+
+def generate_numbers_for_merge_sort_wort_case(numbers_of_elements):
+    set = []
+    population = range(0, 10)
+    for x in range(0, numbers_of_elements / 4):
+        mini_set = random.sample(population, 4)
+        mini_set.sort()
+        set.extend([mini_set[0], mini_set[2], mini_set[1], mini_set[3]])
+    return set
