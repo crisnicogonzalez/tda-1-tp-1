@@ -1,5 +1,8 @@
 import logging
+import math
 import random
+
+from src.utils.switch import switch
 
 FORMAT = "%(asctime)-15s    %(sort)-8s     %(message)s"
 logging.basicConfig(format=FORMAT, level=logging.INFO)
@@ -39,3 +42,7 @@ def generate_numbers_for_merge_sort_wort_case(number_of_elements=10000, number_o
             set.extend([mini_set[2], mini_set[1], mini_set[3], mini_set[0]])
         sets.append(set)
     return sets
+
+
+def generate_numbers_for_quick_sort_wort_case(number_of_elements=10000, number_of_sets=10):
+    return generate_numbers_in_orden(number_of_elements, number_of_sets)

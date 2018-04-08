@@ -12,18 +12,22 @@ def calculate_pivote(list_to_sort):
     return len(list_to_sort) / 2
 
 
+def calculate_naive_pivote(list_to_sort):
+    return 0
+
+
 def sort_two_elements(list_to_sort):
     if list_to_sort[0] > list_to_sort[1]:
         switch(0, 1, list_to_sort)
     return list_to_sort
 
 
-def recursive_sort(list_to_sort):
+def recursive_sort(list_to_sort, pivot_selector=calculate_pivote):
     logging.debug('List to sort {}'.format(list_to_sort), extra=log_info)
     if len(list_to_sort) > 1:
         if len(list_to_sort) == 2:
             return sort_two_elements(list_to_sort)
-        pivot_position = calculate_pivote(list_to_sort)
+        pivot_position = pivot_selector(list_to_sort)
         pivot_value = list_to_sort[pivot_position]
         del list_to_sort[pivot_position]
         logging.debug('List to sort sin el pivote {} pivote {}'.format(list_to_sort, pivot_value), extra=log_info)
@@ -37,10 +41,6 @@ def recursive_sort(list_to_sort):
             if list_to_sort[j] >= pivot_value:
                 j -= 1
         logging.debug('I es {}'.format(i), extra=log_info)
-        if i == j:
-            logging.debug('I y J son iguales!!!!', extra=log_info)
-        else:
-            logging.debug('I y J se cruzaron !!!!', extra=log_info)
         medium = i+1
         if list_to_sort[i] > pivot_value:
             medium = i
@@ -48,7 +48,7 @@ def recursive_sort(list_to_sort):
         right = list_to_sort[medium:]
         logging.debug('Left {}'.format(left), extra=log_info)
         logging.debug('Right {}'.format(right), extra=log_info)
-        logging.debug('Como quedo dividido {} + [{}] + {}'.format(left,pivot_value, right), extra=log_info)
+        logging.debug('Como quedo dividido {} + [{}] + {}'.format(left, pivot_value, right), extra=log_info)
         left_sorted = recursive_sort(left)
         logging.debug('Left sorted {}'.format(left_sorted), extra=log_info)
         return left_sorted + [pivot_value] + recursive_sort(right)
@@ -60,11 +60,9 @@ def sort(list_to_sort):
     return sorted_list
 
 
-
-
-
-
-
+def naive_quick_sort(list_to_sort):
+    sorted_list = recursive_sort(list_to_sort,calculate_naive_pivote)
+    return sorted_list
 
 
 

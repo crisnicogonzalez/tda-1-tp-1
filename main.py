@@ -3,10 +3,9 @@ import time
 import numpy as np
 
 from src.sort.merge_sort import sort as merge_sort
-from src.sort.quick_sort import sort as quick_sort
+from src.sort.quick_sort import sort as quick_sort,naive_quick_sort
 from src.sort.insertion_sort import sort as insertion_sort
 from src.utils.generator_numbers import *
-
 
 sorters = {
     'quick_sort': quick_sort,
@@ -103,10 +102,10 @@ def run():
     # print_sort_name_and_time(calculate_mean_time_for_every_sort({'merge_sort':result_merge_sort_wort_case}))
     # print 'Merge sort normal case'
     # print_sort_name_and_time(calculate_mean_time_for_every_sort({'merge_sort':result_merge_sort_normal_case}))
-    wort_set_for_quick_sort = generate_numbers_in_orden()
+    wort_set_for_quick_sort = generate_random_numbers_set()
     normal_set_for_quick_sort = generate_random_numbers_set()
     result_quick_sort_normal_case = test_sort(normal_set_for_quick_sort, quick_sort)
-    result_quick_sort_wort_case = test_sort(wort_set_for_quick_sort, quick_sort)
+    result_quick_sort_wort_case = test_sort(wort_set_for_quick_sort, naive_quick_sort)
     print 'Quick sort normal case'
     print_sort_name_and_time(calculate_mean_time_for_every_sort({'quick_sort': result_quick_sort_normal_case}))
     print 'Quick sort wort case'
