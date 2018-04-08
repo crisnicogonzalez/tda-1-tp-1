@@ -1,5 +1,5 @@
 import unittest
-from src.sort.merge_sort import sort
+from src.algorithm.sort.merge_sort import sort
 from src.utils.sort_validator import check_order
 
 

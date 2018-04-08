@@ -1,10 +1,9 @@
-import logging
 import time
 import numpy as np
 
-from src.sort.merge_sort import sort as merge_sort
-from src.sort.quick_sort import sort as quick_sort,naive_quick_sort
-from src.sort.insertion_sort import sort as insertion_sort
+from src.algorithm.sort.merge_sort import sort as merge_sort
+from src.algorithm.sort.quick_sort import sort as quick_sort
+from src.algorithm.sort import sort as insertion_sort
 from src.utils.generator_numbers import *
 
 sorters = {
@@ -113,7 +112,7 @@ def run():
     logging.info('Iniciando punto 1 item f del TP', extra=log_info)
     run_insertion_sort_wort_case()
     run_merge_sort_wort_case()
-    
+
 
 
 
