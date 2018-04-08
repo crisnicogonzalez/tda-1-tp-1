@@ -1,11 +1,11 @@
 import logging
-import random
 import time
 import numpy as np
 
 from src.sort.merge_sort import sort as merge_sort
 from src.sort.quick_sort import sort as quick_sort
 from src.sort.insertion_sort import sort as insertion_sort
+from src.utils.generator_numbers import generate_random_numbers_set
 
 
 sorters = {
@@ -19,27 +19,7 @@ FORMAT = "%(asctime)-15s    %(sort)-8s     %(message)s"
 logging.basicConfig(format=FORMAT, level=logging.INFO)
 log_info = {'sort': 'Main'}
 
-limit = 10000
 set_lens = [50, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500, 10000]
-
-
-def generate_random_numbers_set():
-    logging.info('Generando el conjunto de numeros randoms', extra=log_info)
-    sets = []
-    quantity_sets = 10
-    set = []
-    for i in range(0, quantity_sets):
-        logging.info('Generando el conjunto {}'.format(i), extra=log_info)
-        for x in range(0, limit):
-            set.append(random.randint(0, limit))
-        sets.append(set)
-    return sets
-
-
-def generate_numbers_in_orden(size_limit, descending=True):
-    if descending:
-        return range(size_limit, 0)
-    return range(0, size_limit)
 
 
 def wrapper(list_to_sort, sort):
@@ -94,7 +74,7 @@ def test_sort(sets, sort):
 
 def run():
     logging.info('Iniciando punto 1 item b del TP', extra=log_info)
-    sets = generate_random_numbers_set()
+    sets = generate_random_numbers_set(10000, 10)
     logging.info('Iniciando punto 1 item c del TP', extra=log_info)
     results = test_sorts(sets)
     logging.info('Iniciando punto 1 item d del TP', extra=log_info)
