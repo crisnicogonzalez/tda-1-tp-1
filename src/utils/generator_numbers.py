@@ -20,5 +20,5 @@ def generate_random_numbers_set(number_of_elements, numbers_of_sets):
 
 def generate_numbers_in_orden(size_limit, descending=True):
     if descending:
-        return range(size_limit, 0)
+        return range(size_limit, 0, -1)
     return range(0, size_limit)
