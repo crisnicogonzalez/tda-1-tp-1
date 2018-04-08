@@ -52,15 +52,20 @@ def initialize_results_dict(set_lens):
     return results
 
 
+def print_sort_name_and_time(averages):
+    for sort_name in sorters:
+        print 'Sort name :{}'.format(sort_name)
+        for execution_time in averages:
+            print '{},{}'.format(execution_time, averages[execution_time][sort_name])
+
+
 def calculate_mean_time_for_every_sort(results):
     variance_and_mean_times = {}
     for len_set in results:
         variance_and_mean_times[len_set] = {}
         for key_sort in results[len_set]:
             execution_times = results[len_set][key_sort]
-            variance_and_mean_times[len_set][key_sort] = {
-                'mean': np.mean(execution_times),
-            }
+            variance_and_mean_times[len_set][key_sort] = np.mean(execution_times)
     return variance_and_mean_times
 
 
@@ -91,8 +96,9 @@ def run():
     logging.info('Iniciando punto 1 item c del TP', extra=log_info)
     results = test_sorts(sets)
     logging.info('Iniciando punto 1 item d del TP', extra=log_info)
-    averages_and_variances = calculate_mean_time_for_every_sort(results)
-    print averages_and_variances
+    execution_time_average = calculate_mean_time_for_every_sort(results)
+    print execution_time_average
+    print_sort_name_and_time(execution_time_average)
     grafic_average()
     print results
 
