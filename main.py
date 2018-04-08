@@ -2,7 +2,6 @@ import logging
 import random
 import time
 import numpy as np
-import matplotlib.pyplot as plt
 
 from src.sort.merge_sort import sort as merge_sort
 from src.sort.quick_sort import sort as quick_sort
@@ -21,6 +20,7 @@ logging.basicConfig(format=FORMAT, level=logging.INFO)
 log_info = {'sort': 'Main'}
 
 limit = 10000
+set_lens = [50, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500, 10000]
 
 
 def generate_random_numbers_set():
@@ -36,6 +36,12 @@ def generate_random_numbers_set():
     return sets
 
 
+def generate_numbers_in_orden(size_limit, descending=True):
+    if descending:
+        return range(size_limit, 0)
+    return range(0, size_limit)
+
+
 def wrapper(list_to_sort, sort):
     start = time.time()
     sort(list_to_sort)
@@ -43,51 +49,47 @@ def wrapper(list_to_sort, sort):
     return end-start
 
 
-def initialize_results_dict(set_lens):
-    results = {}
+def initialize_results_dict():
+    result = {}
     for set_len in set_lens:
-        results[set_len] = {}
-        for key_sort in sorters:
-            results[set_len][key_sort] = []
-    return results
+        result[set_len] = []
+    return result
 
 
 def print_sort_name_and_time(averages):
-    for sort_name in sorters:
-        print 'Sort name :{}'.format(sort_name)
-        for execution_time in averages:
-            print '{},{}'.format(execution_time, averages[execution_time][sort_name])
+    for sort_name in averages:
+        for set_len in set_lens:
+            print('{},{}'.format(set_len, averages[sort_name][set_len]))
 
 
 def calculate_mean_time_for_every_sort(results):
-    variance_and_mean_times = {}
-    for len_set in results:
-        variance_and_mean_times[len_set] = {}
-        for key_sort in results[len_set]:
-            execution_times = results[len_set][key_sort]
-            variance_and_mean_times[len_set][key_sort] = np.mean(execution_times)
-    return variance_and_mean_times
+    execution_time_averages = {}
+    for sort_name in results:
+        execution_time_averages[sort_name] = {}
+        for set_len in set_lens:
+            execution_time_averages[sort_name][set_len] = np.mean(results[sort_name][set_len])
+    return execution_time_averages
 
 
 def test_sorts(sets):
-    set_lens = [50, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500, 10000]
-    results = initialize_results_dict(set_lens)
+    results = {}
     for key_sort in sorters:
         sort = sorters[key_sort]
-        for set in sets:
-            for set_len in set_lens:
-                logging.info('Algoritmo {} para {} elementos'.format(key_sort, set_len), extra=log_info)
-                testing_set = set[:set_len]
-                ejecution_time = wrapper(testing_set, sort)
-                results[set_len][key_sort].append(ejecution_time)
+        logging.info('{}'.format(key_sort), extra=log_info)
+        result = test_sort(sets, sort)
+        results[key_sort] = result
     return results
 
 
-def grafic_average():
-    plt.plot([1, 2, 3, 4], [1, 4, 9, 16], 'ro')
-    plt.plot([1, 2, 3, 6], [1, 4, 9, 18], 'ro')
-    plt.axis([0, 6, 0, 20])
-    plt.show()
+def test_sort(sets, sort):
+    results = initialize_results_dict()
+    for set_len in set_lens:
+        logging.info('Ordenando el set de {} elementos'.format(set_len), extra=log_info)
+        for set in sets:
+            testing_set = set[:set_len]
+            execution_time = wrapper(testing_set, sort)
+            results[set_len].append(execution_time)
+    return results
 
 
 def run():
@@ -99,9 +101,8 @@ def run():
     execution_time_average = calculate_mean_time_for_every_sort(results)
     print execution_time_average
     print_sort_name_and_time(execution_time_average)
-    grafic_average()
+    logging.info('Iniciando punto 1 item f del TP', extra=log_info)
     print results
-
 
 
 if __name__ == '__main__':
