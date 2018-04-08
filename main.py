@@ -37,6 +37,7 @@ def initialize_results_dict():
 
 
 def print_sort_name_and_time(averages):
+    print averages
     for sort_name in averages:
         print sort_name
         for set_len in set_lens:
@@ -90,7 +91,7 @@ def run():
     set_ordered = generate_numbers_in_orden(10000)
     result_insertion_sort = test_sort([set_ordered], insertion_sort)
     print result_insertion_sort
-    # print results
+    print results
 
 
 if __name__ == '__main__':
