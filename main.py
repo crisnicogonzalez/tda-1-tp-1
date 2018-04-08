@@ -1,8 +1,8 @@
 import time
 import numpy as np
 
-from src.algorithm.sort.merge_sort import sort as merge_sort
-from src.algorithm.sort.quick_sort import sort as quick_sort
+from src.algorithm.merge_sort import sort as merge_sort
+from src.algorithm.quick_sort import sort as quick_sort
 from src.algorithm.sort import sort as insertion_sort
 from src.utils.generator_numbers import *
 

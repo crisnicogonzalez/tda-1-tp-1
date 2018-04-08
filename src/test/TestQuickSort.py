@@ -1,5 +1,5 @@
 import unittest
-from src.algorithm.sort.quick_sort import sort
+from src.algorithm.quick_sort import sort
 from src.utils.sort_validator import check_order
 
 
