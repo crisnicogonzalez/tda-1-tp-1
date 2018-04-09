@@ -1,4 +1,5 @@
 import random
+import os
 
 
 def create_drafts(env='MINIMAL'):
@@ -15,6 +16,17 @@ def create(first_set, second_set, package, key_name_file):
         for team in set_mix:
             file.write(str(team)+'\n')
         file.close()
+
+
+def delete_drafts():
+    folder = 'src/files/gale_shapley'
+    for the_file in os.listdir(folder):
+        file_path = os.path.join(folder, the_file)
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+        except Exception as e:
+            print(e)
 
 
 def get_players_names(env='HIGHT'):
