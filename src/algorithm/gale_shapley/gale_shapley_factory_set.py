@@ -1,7 +1,7 @@
 from src.algorithm.gale_shapley.player import Player
 from src.algorithm.gale_shapley.team import Team
 import os
-
+from src.config.config import get_value_of_key
 
 path_files = 'src/files/gale_shapley/'
 
@@ -26,10 +26,11 @@ def link(draft, instances_dict, other_instances_dict):
 def create_instances(players_name, teams_name):
     players = {}
     teams = {}
+    team_need_to_complete = get_value_of_key('need_to_complete')
     for player_name in players_name:
         players[player_name] = Player(player_name)
     for team_name in teams_name:
-        teams[team_name] = Team(team_name)
+        teams[team_name] = Team(team_name,team_need_to_complete)
     return players, teams
 
 
@@ -41,9 +42,9 @@ def up_file_by_name(file_name):
     return open(file_name, 'r')
 
 
-def format_file(file):
+def format_file(a_file):
     draft = []
-    for line in file:
+    for line in a_file:
         draft.append(int(line))
     return draft
 
