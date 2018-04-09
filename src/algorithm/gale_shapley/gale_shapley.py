@@ -15,11 +15,13 @@ def print_result(teams, players):
 
 def if_there_is_a_free_team(teams):
     for team in teams:
-        if team.is_free(): return True
+        if team.is_unengage():
+            return True
     return False
 
 
 def get_free_team(teams):
     for team in teams:
-        if team.isFree(): return team
+        if team.is_unengage():
+            return team
     return None
