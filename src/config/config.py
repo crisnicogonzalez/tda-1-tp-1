@@ -21,6 +21,12 @@ my_config = {
         'numbers_of_teams': 10,
         'need_to_complete': 10,
         'run_point_one': False
+    },
+    'PROD_SHAPLEY': {
+        'numbers_of_players': 200,
+        'numbers_of_teams': 20,
+        'need_to_complete': 10,
+        'run_point_one': False
     }
 }
 
