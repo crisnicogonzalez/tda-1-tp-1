@@ -19,3 +19,6 @@ class Player:
             team.unengage_player_by_name(self)
         self.engaged_with = team
 
+    def get_name(self):
+        return name
+
