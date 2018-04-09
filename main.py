@@ -101,7 +101,7 @@ def do_point_two():
     set_environment('MINIMAL')
     create_drafts()
     players, teams = factory(get_players_names(), get_teams_names())
-    gale_shapley(teams, players)
+    gale_shapley(teams)
 
 
 def run():
