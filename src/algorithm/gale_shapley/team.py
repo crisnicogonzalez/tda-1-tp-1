@@ -1,4 +1,9 @@
 from heapq import heappush, heappop
+import logging
+
+FORMAT = "%(asctime)-15s    %(sort)-8s     %(message)s"
+logging.basicConfig(format=FORMAT, level=logging.INFO)
+log_info = {'sort': 'Team'}
 
 
 class Team:
@@ -24,6 +29,7 @@ class Team:
         self.players_engaged_with_me.append(player)
 
     def delete_player(self, player):
+        logging.info('Eliminando relacion entre el equipo {} y el jugador {}'.format(self.name, player.get_name()), extra=log_info)
         i = 0
         aux_player = self.players[i][1]
         while aux_player.get_name() != player.get_name():
