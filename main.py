@@ -3,8 +3,9 @@ import numpy as np
 
 from src.algorithm.merge_sort import sort as merge_sort
 from src.algorithm.quick_sort import sort as quick_sort
-from src.algorithm.sort import sort as insertion_sort
+from src.algorithm.insertion_sort import sort as insertion_sort
 from src.utils.generator_numbers import *
+from src.utils.draft_setup import create_drafts
 
 sorters = {
     'quick_sort': quick_sort,
@@ -93,22 +94,27 @@ def run_insertion_sort_wort_case():
         calculate_mean_time_for_every_sort({'insertion_sort_normal_case': result_insertion_sort_normal_case}))
 
 
+def do_point_two():
+    env = 'MINIMAL'
+    create_drafts(env)
+
+
 def run():
+    # do_point_one()
+    do_point_two()
+
+
+def do_point_one():
     logging.info('Iniciando punto 1 item b del TP', extra=log_info)
     sets = generate_random_numbers_set(10000, 10)
-
     logging.info('Iniciando punto 1 item c del TP', extra=log_info)
     results = test_sorts(sets)
-
     logging.info('Iniciando punto 1 item d del TP', extra=log_info)
     execution_time_average = calculate_mean_time_for_every_sort(results)
     print_sort_name_and_time(execution_time_average)
-
     logging.info('Iniciando punto 1 item f del TP', extra=log_info)
     run_insertion_sort_wort_case()
     run_merge_sort_wort_case()
-
-
 
 
 if __name__ == '__main__':
