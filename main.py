@@ -5,9 +5,10 @@ from src.algorithm.merge_sort import sort as merge_sort
 from src.algorithm.quick_sort import sort as quick_sort
 from src.algorithm.insertion_sort import sort as insertion_sort
 from src.utils.generator_numbers import *
-from src.utils.draft_setup import create_drafts, delete_drafts, get_teams_names, get_players_names
+from src.utils.draft_setup import create_drafts, get_teams_names, get_players_names
 from src.algorithm.gale_shapley.gale_shapley_factory_set import factory
 from src.algorithm.gale_shapley.gale_shapley import gale_shapley
+from src.config.config import set_environment,get_value_of_key
 
 sorters = {
     'quick_sort': quick_sort,
@@ -97,17 +98,15 @@ def run_insertion_sort_wort_case():
 
 
 def do_point_two():
-    env = 'MINIMAL'
-    create_drafts(env)
-    delete_drafts()
-    players,teams = factory(get_players_names(env), get_teams_names(env))
-    gale_shapley(teams,players)
-
-
+    set_environment('MINIMAL')
+    create_drafts()
+    players, teams = factory(get_players_names(), get_teams_names())
+    gale_shapley(teams, players)
 
 
 def run():
-    # do_point_one()
+    if bool(get_value_of_key('run_point_one')):
+        do_point_one()
     do_point_two()
 
 

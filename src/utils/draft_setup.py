@@ -1,10 +1,11 @@
 import random
 import os
+from src.config.config import get_value_of_key
 
 
-def create_drafts(env='MINIMAL'):
-    players_names = get_players_names(env)
-    teams_names = get_teams_names(env)
+def create_drafts():
+    players_names = get_players_names()
+    teams_names = get_teams_names()
     create(teams_names, players_names, 'teams', 'equipo')
     create(players_names, teams_names, 'players', 'jugador')
 
@@ -29,19 +30,9 @@ def delete_drafts():
             print(e)
 
 
-def get_players_names(env='HIGHT'):
-    if env == 'MEDIUM':
-        return range(1, 101)
-    elif env == 'MINIMAL':
-        return range(1, 21)
-    elif env == 'HIGHT':
-        return range(1, 201)
+def get_players_names():
+    return range(1, get_value_of_key('numbers_of_players')+1)
 
 
-def get_teams_names(env='HIGHT'):
-    if env == 'MEDIUM':
-        return range(1, 5)
-    elif env == 'MINIMAL':
-        return range(1, 3)
-    elif env == 'HIGHT':
-        return range(1, 21)
+def get_teams_names():
+    return range(1, get_value_of_key('numbers_of_teams'))
