@@ -23,18 +23,23 @@ class Team:
     def engage_with_player(self, player):
         self.players_engaged_with_me.append(player)
 
-    def delete_player_of_players(self,player):
+    def delete_player(self, player):
         i = 0
         aux_player = self.players[i][1]
         while aux_player.get_name() != player.get_name():
             i += 1
             aux_player = self.players[i][1]
-        del self.players[i]
+        if aux_player.get_name() == player.get_name():
+            del self.players[i]
         i = 0
         aux_player = self.players_engaged_with_me[i]
         while aux_player.get_name() != player.get_name():
             i += 1
             aux_player = self.players_engaged_with_me[i]
-        del self.players_engaged_with_me[i]
+        if aux_player.get_name() == player.get_name():
+            del self.players_engaged_with_me[i]
+
+    def get_name(self):
+        return name
 
 
