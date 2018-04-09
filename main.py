@@ -98,16 +98,22 @@ def run_insertion_sort_wort_case():
 
 
 def do_point_two():
-    set_environment('MINIMAL')
     create_drafts()
     players, teams = factory(get_players_names(), get_teams_names())
     gale_shapley(teams)
 
 
+def get_environment():
+    env_file = open('env.conf', 'r')
+    return env_file.readline()
+
+    
 def run():
+    set_environment(get_environment())
     if bool(get_value_of_key('run_point_one')):
         do_point_one()
-    do_point_two()
+    if bool(get_value_of_key('run_point_two')):
+        do_point_two()
 
 
 def do_point_one():
