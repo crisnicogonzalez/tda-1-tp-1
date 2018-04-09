@@ -34,11 +34,6 @@ def initialize_results_dict():
     return result
 
 
-def print_result_of_sort(result):
-    for x in result:
-        print '{},{}'.format(x, result[x][0])
-
-
 def print_sort_name_and_time(averages):
     for sort_name in averages:
         print sort_name
@@ -112,8 +107,6 @@ def run():
     logging.info('Iniciando punto 1 item f del TP', extra=log_info)
     run_insertion_sort_wort_case()
     run_merge_sort_wort_case()
-
-
 
 
 

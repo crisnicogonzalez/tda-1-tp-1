@@ -5,7 +5,7 @@ def gale_shapley(teams, players):
         if player.is_unengaged() or player.team_has_more_priority(team.getName()):
             player.engage_with_team(team)
         else:
-                player.delete_team(team.getName())
+            player.delete_team(team.getName())
     print_result(teams, players)
 
 
