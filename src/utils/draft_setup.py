@@ -35,4 +35,4 @@ def get_players_names():
 
 
 def get_teams_names():
-    return range(1, get_value_of_key('numbers_of_teams'))
+    return range(1, get_value_of_key('numbers_of_teams')+1)
