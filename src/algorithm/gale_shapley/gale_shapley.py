@@ -1,28 +1,24 @@
 import logging
-
+from multiprocessing import Queue
 FORMAT = "%(asctime)-15s    %(sort)-8s     %(message)s"
 logging.basicConfig(format=FORMAT, level=logging.INFO)
 log_info = {'sort': 'Gale Shapley'}
 
 
-def gale_shapley(teams):
-    while if_there_is_a_free_team(teams):
-        team = get_free_team(teams)
+def gale_shapley(instance_teams_by_name):
+    set_teams_instance = create_set(instance_teams_by_name)
+    while len(set_teams_instance) != 0:
+        team = set_teams_instance.pop()
         player = team.get_priority_player()
         if player.is_unengaged() or player.team_has_more_priority(team.get_name()):
             player.engage_with_team(team)
             team.engage_with_player(player)
 
 
-def if_there_is_a_free_team(teams):
-    for team in teams:
-        if team.is_incomplete():
-            return True
-    return False
-
-
-def get_free_team(teams):
-    for team in teams:
-        if team.is_incomplete():
-            return team
-    return None
+def create_set(instance_teams_by_name):
+    my_set = set()
+    for name in instance_teams_by_name:
+        team = instance_teams_by_name[name]
+        team.set_teams_queue(my_set)
+        my_set.add(team)
+    return my_set

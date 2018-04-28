@@ -99,7 +99,7 @@ def run_insertion_sort_wort_case():
 
 def do_point_two():
     create_drafts()
-    players, teams = factory(get_players_names(), get_teams_names())
+    teams = factory(get_players_names(), get_teams_names())
     gale_shapley(teams)
 
 

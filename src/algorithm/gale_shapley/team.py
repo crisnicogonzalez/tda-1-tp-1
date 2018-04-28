@@ -10,8 +10,9 @@ class Team:
     def __init__(self, name, numbers_of_players=3):
         self.number_of_players_i_want = numbers_of_players
         self.players = []
-        self.players_engaged_with_me = []
+        self.players_engaged_with_me = {}
         self.name = name
+        self.teams_set = None
 
     def add(self, player, priority):
         heappush(self.players, (priority, player))
@@ -25,19 +26,17 @@ class Team:
         return len(self.players_engaged_with_me) < self.number_of_players_i_want
 
     def engage_with_player(self, player):
-        self.players_engaged_with_me.append(player)
+        self.players_engaged_with_me[player.get_name()] = player
 
     def delete_player(self, player):
         logging.info('Eliminando relacion entre el equipo {} y el jugador {}'.format(self.name, player.get_name()), extra=log_info)
-        i = 0
-        aux_player = self.players_engaged_with_me[i]
-        while aux_player.get_name() != player.get_name() and i < len(self.players_engaged_with_me):
-            aux_player = self.players_engaged_with_me[i]
-            i += 1
-        if aux_player.get_name() == player.get_name():
-            del self.players_engaged_with_me[i-1]
+        self.players_engaged_with_me.pop(player.get_name(), None)
+        self.teams_set.add(self)
 
     def get_name(self):
         return self.name
+
+    def set_teams_queue(self, set_team):
+        self.teams_set = set_team
 
 

@@ -12,7 +12,7 @@ def factory(players_name, teams_name):
     teams_draft = up_draft(teams_name, 'teams', 'equipo')
     link(players_draft, players, teams)
     link(teams_draft, teams, players)
-    return players.values(), teams.values()
+    return teams
 
 
 def link(draft, instances_dict, other_instances_dict):
